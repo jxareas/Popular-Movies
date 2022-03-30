@@ -5,17 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_standard"
+    android:layout_marginBottom="@dimen/margin_high"
     >
 
     <ImageView
         android:id="@+id/image_view_movie_poster"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="300dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintDimensionRatio="4:3"
         android:scaleType="centerCrop"
         android:layout_marginHorizontal="@dimen/margin_standard"
         tools:src="@tools:sample/backgrounds/scenic"
@@ -25,23 +24,22 @@
         android:id="@+id/text_view_movie_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:fontFamily="@font/abeezee"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/grid_2"
+        android:textSize="@dimen/text_size_body_title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_view_movie_poster"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingHorizontal="@dimen/grid_2"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:gravity="center"
-        tools:text="The Godfather"
-        android:textStyle="bold"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
-      />
+        tools:text="The Godfather" />
 
     <TextView
         android:id="@+id/text_view_movie_overview"
-        style="?attr/textAppearanceBodyMedium"
         android:layout_width="0dp"
+
         android:layout_height="wrap_content"
-        android:maxLines="4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/margin_standard"

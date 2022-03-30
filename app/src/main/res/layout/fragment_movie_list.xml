@@ -8,7 +8,8 @@
     tools:context=".view.movies.MovieListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="@dimen/margin_small"
+        android:id="@+id/recycler_view_movies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

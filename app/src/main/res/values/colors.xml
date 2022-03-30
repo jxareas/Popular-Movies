@@ -7,4 +7,30 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="android_emerald">#38c172</color>
+    <color name="blue_light">#3490dc</color>
+    <color name="blue_firebase">#0093fa</color>
+    <color name="blue_steel">#30D5C8</color>
+    <color name="grey_slate">#DCDCDC</color>
+    <color name="anti_flash_white">#F4F6F9</color>
+    <color name="light_gray">#ececec</color>
+    <color name="dark_gray">#767676</color>
+    <color name="darker_gray">#1B1B1B</color>
+    <color name="brown">#402C18</color>
+
+    <color name="red">#FFEF1D26</color>
+    <color name="red_purple">#ffa72391</color>
+    <color name="purple">#ff5b3197</color>
+    <color name="purple_blue">#ff20429c</color>
+    <color name="blue">#ff0268b3</color>
+    <color name="dark_blue">#1b2838</color>
+    <color name="blue_green">#ff00aeaf</color>
+    <color name="green">#ff03a762</color>
+    <color name="green_yellow">#ff73bf45</color>
+    <color name="yellow">#fffef102</color>
+    <color name="yellow_orange">#fff8a71a</color>
+    <color name="orange">#fff58726</color>
+    <color name="orange_red">#ffee423e</color>
+    <color name="arsenic">#333333</color>
+    <color name="pink">#ffe91e63</color>
 </resources>

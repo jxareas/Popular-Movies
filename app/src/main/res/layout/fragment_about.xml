@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/margin_high"
     tools:context=".view.about.AboutFragment">
 
+    <ImageView
+        android:id="@+id/image_view_logo"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_tmdb" />
+
     <TextView
-        android:layout_centerInParent="true"
+        android:id="@+id/aboutMessageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is the about fragment" />
+        android:layout_margin="16dp"
+        android:text="@string/attribution_message"
+        android:textAlignment="center"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="@dimen/dimen_20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_logo" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

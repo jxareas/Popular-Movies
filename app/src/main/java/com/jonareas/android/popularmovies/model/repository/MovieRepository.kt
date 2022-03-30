@@ -1,9 +1,9 @@
 package com.jonareas.android.popularmovies.model.repository
 
-import com.jonareas.android.popularmovies.network.response.GetMoviesResponse
+import com.jonareas.android.popularmovies.model.entities.Movie
 
 interface MovieRepository {
 
-    suspend fun fetchPopularMovies() : GetMoviesResponse
+    suspend fun fetchPopularMovies() : List<Movie>
 
 }

@@ -4,4 +4,8 @@
     <dimen name="grid_2">16dp</dimen>
     <dimen name="grid_1_5">12dp</dimen>
     <dimen name="grid_1">8dp</dimen>
+    <dimen name="margin_high">72dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="text_size_body_title">16sp</dimen>
+    <dimen name="dimen_20sp">20sp</dimen>
 </resources>

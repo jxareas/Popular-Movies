@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TMDB-API</string>
+    <string name="app_name">Cinema</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="attribution_message">This product uses the TMDb API but is not endorsed or certified by TMDb.</string>
 </resources>

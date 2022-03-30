@@ -49,11 +49,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
         fun bind(movie: Movie): Unit = binding.run {
             textViewMovieTitle.text = movie.title
-            textViewMovieOverview.text = movie.description
+            textViewMovieOverview.text = movie.overview
 
             Glide.with(root.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load("${POSTER_PATH_PREFIX}${movie.poster}")
+                .load("${POSTER_PATH_PREFIX}${movie.posterPath}")
                 .into(imageViewMoviePoster)
         }
 
