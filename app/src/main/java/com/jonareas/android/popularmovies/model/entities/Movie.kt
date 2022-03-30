@@ -1,4 +1,4 @@
-package com.jonareas.android.popularmovies.model
+package com.jonareas.android.popularmovies.model.entities
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

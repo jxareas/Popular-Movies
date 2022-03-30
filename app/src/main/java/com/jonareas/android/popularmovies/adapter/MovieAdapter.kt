@@ -7,7 +7,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.jonareas.android.popularmovies.R
 import com.jonareas.android.popularmovies.adapter.MovieAdapter.MovieViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemMovieBinding
-import com.jonareas.android.popularmovies.model.Movie
+import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.utils.help
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
@@ -15,6 +15,8 @@ import kotlinx.coroutines.asExecutor
 class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     private companion object {
+        const val POSTER_PATH_PREFIX : String = "https://image.tmdb.org/t/p/w300"
+
         private val diffCallback = object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
                 oldItem.title == newItem.title
@@ -51,7 +53,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
             Glide.with(root.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load(movie.poster)
+                .load("${POSTER_PATH_PREFIX}${movie.poster}")
                 .into(imageViewMoviePoster)
         }
 
