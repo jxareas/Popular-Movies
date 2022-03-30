@@ -21,6 +21,7 @@ buildscript {
         lifecycle_version = "2.4.1"
         camerax_version = "1.1.0-beta02"
         lottie_version = "5.0.3"
+        glide_version = "4.8.0"
         nav_version = "2.4.1"
         recycler_view_version = "1.2.1"
         recycler_view_selection_version = "1.1.0"
@@ -40,6 +41,12 @@ buildscript {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_hilt"
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+    }
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
     }
 
 }

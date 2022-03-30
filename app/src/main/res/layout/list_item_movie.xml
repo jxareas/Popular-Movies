@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_standard"
+    >
+
+    <ImageView
+        android:id="@+id/image_view_movie_poster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="4:3"
+        android:scaleType="centerCrop"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        tools:src="@tools:sample/backgrounds/scenic"
+        />
+
+    <TextView
+        android:id="@+id/text_view_movie_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_movie_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="@dimen/grid_2"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:gravity="center"
+        tools:text="The Godfather"
+        android:textStyle="bold"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+      />
+
+    <TextView
+        android:id="@+id/text_view_movie_overview"
+        style="?attr/textAppearanceBodyMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:paddingHorizontal="@dimen/margin_standard"
+        app:layout_constraintTop_toBottomOf="@id/text_view_movie_title"
+        tools:text="@tools:sample/lorem/random"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
