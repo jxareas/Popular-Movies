@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/margin_high"
-    tools:context=".view.about.AboutFragment">
+    android:layout_marginBottom="@dimen/margin_high">
 
     <ImageView
         android:id="@+id/image_view_logo"
@@ -32,6 +31,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_view_logo" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

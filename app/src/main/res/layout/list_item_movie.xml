@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_high"
-    >
+    android:layout_marginBottom="@dimen/margin_high">
 
     <ImageView
         android:id="@+id/image_view_movie_poster"
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
-        android:layout_marginHorizontal="@dimen/margin_standard"
-        tools:src="@tools:sample/backgrounds/scenic"
-        />
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/text_view_movie_title"
@@ -40,14 +37,12 @@
         android:layout_width="0dp"
 
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/margin_standard"
         android:paddingHorizontal="@dimen/margin_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_movie_title"
-        tools:text="@tools:sample/lorem/random"
-        />
-
+        tools:text="@tools:sample/lorem/random" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
