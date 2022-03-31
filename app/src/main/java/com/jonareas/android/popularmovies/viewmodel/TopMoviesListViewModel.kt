@@ -6,36 +6,36 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.model.repository.MovieRepository
+import com.jonareas.android.popularmovies.utils.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.ContinuationInterceptor
 
 @HiltViewModel
 class TopMoviesListViewModel @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
+    private val dispatchers : DispatcherProvider
 ) :
     ViewModel() {
 
-    private var _popularMovies = MutableLiveData<List<Movie>>()
-    val popularMovies: LiveData<List<Movie>> = _popularMovies
+    private var _topRatedMovies = MutableLiveData<List<Movie>>()
+    val topRatedMovies: LiveData<List<Movie>> = _topRatedMovies
 
     init {
-        fetchTopMovies()
+        fetchTopRatedMovies()
     }
 
-    private fun fetchTopMovies() {
+    private fun fetchTopRatedMovies() {
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatchers.io) {
             movieRepository.fetchPopularMovies()
                 .map { listOfMovies ->
-                    listOfMovies.filter { movie -> movie.voteAverage > 7.5 }
+                    listOfMovies.filter { movie -> movie.voteAverage >= 7.5 }
                         .sortedByDescending { movie -> movie.voteAverage }
                 }.collectLatest { listOfMovies ->
-                    _popularMovies.postValue(listOfMovies)
+                    _topRatedMovies.postValue(listOfMovies)
                 }
         }
 

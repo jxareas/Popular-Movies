@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jonareas.android.popularmovies.adapter.MovieAdapter
 import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
-import com.jonareas.android.popularmovies.viewmodel.MovieListViewModel
 import com.jonareas.android.popularmovies.viewmodel.TopMoviesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,7 +38,7 @@ class TopMoviesListFragment : Fragment() {
 
     private fun initObservers() : Unit = binding.run {
 
-        viewModel.popularMovies.observe(viewLifecycleOwner) { listOfMovies ->
+        viewModel.topRatedMovies.observe(viewLifecycleOwner) { listOfMovies ->
             listOfMovies?.let {
                 (recyclerViewMovies.adapter as MovieAdapter).itemList = it
             }
