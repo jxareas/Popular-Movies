@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jonareas.android.popularmovies.adapter.MovieAdapter
 import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
 import com.jonareas.android.popularmovies.viewmodel.MovieListViewModel
+import com.jonareas.android.popularmovies.viewmodel.TopMoviesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieListFragment : Fragment() {
+class TopMoviesListFragment : Fragment() {
 
-    private val viewModel : MovieListViewModel by viewModels()
+    private val viewModel : TopMoviesListViewModel by viewModels()
 
     private var _binding : FragmentMovieListBinding? = null
     private val binding : FragmentMovieListBinding
@@ -25,9 +26,10 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       _binding = FragmentMovieListBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieListBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

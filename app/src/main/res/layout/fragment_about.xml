@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/margin_high"
     tools:context=".view.about.AboutFragment">
 
     <ImageView
@@ -12,7 +11,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="@dimen/margin_high"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -18,6 +18,20 @@
         android:scaleType="centerCrop"
         android:layout_marginHorizontal="@dimen/margin_standard"
         tools:src="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/movie_poster" />
+
+    <TextView
+        android:id="@+id/text_view_movie_rating"
+        android:background="@color/light_gray"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="8.5"
+        android:fontFamily="@font/abeezee"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/image_view_movie_poster"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_movie_poster"
         />
 
     <TextView
@@ -38,7 +52,6 @@
     <TextView
         android:id="@+id/text_view_movie_overview"
         android:layout_width="0dp"
-
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

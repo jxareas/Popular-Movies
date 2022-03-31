@@ -8,6 +8,7 @@ import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.model.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,8 +16,8 @@ import javax.inject.Inject
 class MovieListViewModel @Inject constructor(private val movieRepository: MovieRepository) :
     ViewModel() {
 
-        private var _movies = MutableLiveData<List<Movie>>()
-        val movies : LiveData<List<Movie>> = _movies
+        private var _popularMovies = MutableLiveData<List<Movie>>()
+        val popularMovies : LiveData<List<Movie>> = _popularMovies
 
         init {
             fetchMovies()
@@ -24,7 +25,10 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
 
         private fun fetchMovies() {
             viewModelScope.launch(Dispatchers.IO) {
-                _movies.postValue(movieRepository.fetchPopularMovies())
+                movieRepository.fetchPopularMovies().collectLatest { listOfMovies ->
+                _popularMovies.postValue(listOfMovies)
+
+                }
             }
         }
 

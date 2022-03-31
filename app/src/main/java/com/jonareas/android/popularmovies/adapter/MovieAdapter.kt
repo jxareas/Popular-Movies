@@ -50,6 +50,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
         fun bind(movie: Movie): Unit = binding.run {
             textViewMovieTitle.text = movie.title
             textViewMovieOverview.text = movie.overview
+            textViewMovieRating.text = " ${movie.voteAverage} "
 
             Glide.with(root.context)
                 .applyDefaultRequestOptions(requestOptions)
