@@ -13,7 +13,7 @@ class HomeViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycl
 
     private val fragments : Set<Fragment> = setOf(MovieListFragment(), TopMoviesListFragment(), AboutFragment())
 
-    val titles : Set<String> = setOf("Now Screening", "Top",  "About")
+    val titles : Set<String> = setOf("New", "Top",  "About")
 
     override fun getItemCount(): Int = fragments.size
 

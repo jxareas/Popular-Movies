@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Template.Widget.TabLayout" parent="Widget.Material3.TabLayout.Secondary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="tabIndicatorAnimationMode">linear</item>
+        <item name="android:background">?attr/colorOnPrimary</item>
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabTextColor">?attr/colorPrimary</item>
+        <item name="tabIndicatorFullWidth">true</item>
+    </style>
 </resources>

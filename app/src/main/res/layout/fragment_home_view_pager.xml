@@ -7,6 +7,7 @@
     tools:context=".view.home.HomeViewPagerFragment">
 
     <com.google.android.material.tabs.TabLayout
+        style="@style/Template.Widget.TabLayout"
         android:id="@+id/tab_layout_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
