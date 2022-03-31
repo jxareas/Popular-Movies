@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="theme_entries">
+        <item>@string/light</item>
+        <item>@string/dark</item>
+        <item>@string/follow_system</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>default</item>
+    </string-array>
+
+    <string-array name="reply_entries">
+        <item>@string/reply</item>
+        <item>@string/reply_to_all</item>
+        <item>@string/reply_to_none</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+        <item>reply_none</item>
+    </string-array>
+
+
+
+</resources>

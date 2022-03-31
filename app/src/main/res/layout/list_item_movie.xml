@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardPreventCornerOverlap="true"
-    card_view:cardUseCompatPadding="true"
     card_view:cardCornerRadius="@dimen/card_corner_radius"
     card_view:cardElevation="@dimen/card_elevation"
-    >
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inner_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent">
 
-        >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/margin_high"
-            >
+            android:paddingBottom="@dimen/margin_high">
+
             <ImageView
                 android:id="@+id/image_view_movie_poster"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
+                android:contentDescription="@string/movie_poster"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic"
-                android:contentDescription="@string/movie_poster" />
+                tools:src="@tools:sample/backgrounds/scenic" />
 
 
             <TextView
@@ -53,10 +51,10 @@
                 android:id="@+id/text_view_movie_overview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:paddingHorizontal="@dimen/margin_standard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_movie_title"
                 tools:text="@tools:sample/lorem/random"
                 />
@@ -64,16 +62,15 @@
 
         <TextView
             android:id="@+id/text_view_movie_rating"
-            android:background="@color/light_gray"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="8.5"
-            android:fontFamily="@font/abeezee"
-            android:textSize="@dimen/dimen_20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/abeezee"
+            android:text="8.5"
+            android:textSize="@dimen/dimen_20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

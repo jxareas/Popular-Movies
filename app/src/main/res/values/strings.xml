@@ -4,4 +4,28 @@
     <string name="attribution_message">This product uses the TMDb API but is not endorsed or certified by TMDb.</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="movie_rating">  &#160;&#160;%.1f&#160;&#160;  </string>
+    <string name="user_preferences">User Preferences</string>
+    <string name="theme">Theme</string>
+
+
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="follow_system">Follow System</string>
+
+
+    <string name="reply">Reply</string>
+    <string name="reply_to_all">Reply to all</string>
+    <string name="reply_to_none">Reply to none</string>
+
+    <string name="disable_notifications">Disable notifications</string>
+    <string name="no_more_notifications">You will no longer receive any notifications</string>
+    <string name="all_notifications">You will receive all notifications</string>
+    <string name="notifications">Notifications</string>
+
+    <!-- Messages Preferences -->
+    <string name="messages_header">Messages</string>
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+    <string name="volume">Volume</string>
+
 </resources>
