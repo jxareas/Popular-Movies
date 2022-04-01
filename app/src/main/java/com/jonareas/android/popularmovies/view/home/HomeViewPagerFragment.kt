@@ -35,7 +35,7 @@ class HomeViewPagerFragment : Fragment() {
         viewPagerHome.adapter = homeAdapter
 
         TabLayoutMediator(tabLayoutHome, viewPagerHome) { tab, index ->
-            tab.text = homeAdapter.titles.elementAt(index)
+            tab.text = getString(homeAdapter.titles.elementAt(index))
         }.attach()
 
     }

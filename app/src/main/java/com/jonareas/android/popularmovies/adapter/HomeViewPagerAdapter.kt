@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.jonareas.android.popularmovies.R
 import com.jonareas.android.popularmovies.view.movies.MovieListFragment
 import com.jonareas.android.popularmovies.view.movies.TopMoviesListFragment
 import com.jonareas.android.popularmovies.view.settings.PreferencesFragment
@@ -13,7 +14,7 @@ class HomeViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycl
 
     private val fragments : Set<Fragment> = setOf(MovieListFragment(), TopMoviesListFragment(), PreferencesFragment())
 
-    val titles : Set<String> = setOf("New", "Top",  "Settings")
+    val titles : Set<Int> = setOf(R.string.popular, R.string.top, R.string.settings)
 
     override fun getItemCount(): Int = fragments.size
 
