@@ -9,8 +9,8 @@ data class Movie(
     @SerialName(value = "backdrop_path")
     val backdropPath: String?,
     @SerialName(value = "genre_ids")
-    val genreIds: List<Int>?,
-    val id: Int?,
+    val genreIds: List<Int>? = listOf(),
+    val id: Int,
     @SerialName(value = "original_language")
     val originalLanguage: String?,
     @SerialName(value = "original_title")
@@ -21,7 +21,7 @@ data class Movie(
     val posterPath: String?,
     @SerialName(value = "release_date")
     val releaseDate: String?,
-    val title: String?,
+    val title: String,
     val video: Boolean?,
     @SerialName(value = "vote_average")
     val voteAverage: Float,

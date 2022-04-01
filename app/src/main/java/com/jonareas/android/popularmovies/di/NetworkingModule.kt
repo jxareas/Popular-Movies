@@ -58,11 +58,18 @@ object NetworkingModule {
             .addInterceptor(loggingInterceptor)
             .build()
 
+    @Provides
+    @Singleton
+    fun provideJson() : Json =
+        Json {
+            ignoreUnknownKeys = true
+        }
+
     @ExperimentalSerializationApi
     @Provides
     @Singleton
-    fun provideConverter() : Converter.Factory =
-        Json.asConverterFactory(APPLICATION_JSON.toMediaType())
+    fun provideConverter(json : Json) : Converter.Factory =
+        json.asConverterFactory(APPLICATION_JSON.toMediaType())
 
     @Provides
     @Singleton

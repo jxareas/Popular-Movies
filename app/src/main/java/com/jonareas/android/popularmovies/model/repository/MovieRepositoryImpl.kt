@@ -17,4 +17,12 @@ class MovieRepositoryImpl @Inject constructor(private val movieService: MovieSer
             throwable.printStackTrace()
             emptyFlow()
         }
+
+    override suspend fun fetchMovieById(id : Int): Flow<Movie> =
+        try {
+            flow { emit(movieService.fetchMovieById(id)) }
+        } catch(throwable : Throwable) {
+            throwable.printStackTrace()
+            emptyFlow()
+        }
 }

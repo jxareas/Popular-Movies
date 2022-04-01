@@ -33,6 +33,7 @@ class MovieListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         initObservers()
+
     }
 
     private fun initObservers() : Unit = binding.run {

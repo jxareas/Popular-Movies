@@ -3,6 +3,7 @@ package com.jonareas.android.popularmovies.adapter
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.*
 import com.bumptech.glide.Glide
@@ -15,15 +16,16 @@ import com.jonareas.android.popularmovies.R
 import com.jonareas.android.popularmovies.adapter.MovieAdapter.MovieViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemMovieBinding
 import com.jonareas.android.popularmovies.model.entities.Movie
+import com.jonareas.android.popularmovies.utils.POSTER_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.isColorDark
+import com.jonareas.android.popularmovies.view.home.HomeViewPagerFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
 class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     private companion object {
-        const val POSTER_PATH_PREFIX: String = "https://image.tmdb.org/t/p/w300"
 
         private val diffCallback = object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
@@ -84,22 +86,29 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
                         if (resource != null) {
                             Palette.from(resource)
                                 .generate().dominantSwatch?.rgb?.let { dominantColor ->
-                                innerConstraintLayout.setBackgroundColor(dominantColor)
-                                val textColor =
-                                    if (isColorDark(dominantColor)) Color.WHITE else Color.BLACK
+                                    innerConstraintLayout.setBackgroundColor(dominantColor)
+                                    val textColor =
+                                        if (isColorDark(dominantColor)) Color.WHITE else Color.BLACK
 
-                                textViewMovieTitle.setTextColor(textColor)
-                                textViewMovieOverview.setTextColor(textColor)
-                                textViewMovieRating.setTextColor(textColor)
-                                textViewMovieRating.setBackgroundColor(dominantColor)
-                            }
+                                    textViewMovieTitle.setTextColor(textColor)
+                                    textViewMovieOverview.setTextColor(textColor)
+                                    textViewMovieRating.setTextColor(textColor)
+                                    textViewMovieRating.setBackgroundColor(dominantColor)
+                                }
 
                         }
                         return false
                     }
                 }).into(imageViewMoviePoster)
 
-
+            root.setOnClickListener { view ->
+                Navigation.findNavController(view).navigate(
+                    HomeViewPagerFragmentDirections.actionToMovieDetail(
+                        movie.title,
+                        movie.id
+                    )
+                )
+            }
         }
 
     }
