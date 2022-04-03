@@ -1,15 +1,12 @@
 package com.jonareas.android.popularmovies.view
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.jonareas.android.popularmovies.R
 import com.jonareas.android.popularmovies.databinding.ActivityMainBinding
-import com.jonareas.android.popularmovies.view.about.AboutFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,20 +30,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        when(item.itemId) {
-            R.id.item_about -> {
-                AboutFragment().show(supportFragmentManager, "ABOUT_FRAGMENT")
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
 
     override fun onSupportNavigateUp(): Boolean =
         navController.navigateUp() || super.onSupportNavigateUp()

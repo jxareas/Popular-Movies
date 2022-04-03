@@ -9,13 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jonareas.android.popularmovies.adapter.MovieAdapter
 import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
-import com.jonareas.android.popularmovies.viewmodel.BestMoviesViewModel
+import com.jonareas.android.popularmovies.viewmodel.NowPlayingMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BestMoviesFragment : Fragment() {
+class NowPlayingMoviesFragment : Fragment(){
 
-    private val viewModel : BestMoviesViewModel by viewModels()
+    private val viewModel : NowPlayingMoviesViewModel by viewModels()
 
     private var _binding : FragmentMovieListBinding? = null
     private val binding : FragmentMovieListBinding
@@ -29,6 +29,7 @@ class BestMoviesFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
@@ -37,7 +38,7 @@ class BestMoviesFragment : Fragment() {
 
     private fun initObservers() : Unit = binding.run {
 
-        viewModel.bestMovies.observe(viewLifecycleOwner) { listOfMovies ->
+        viewModel.nowPlayingMovies.observe(viewLifecycleOwner) { listOfMovies ->
             listOfMovies?.let {
                 (recyclerViewMovies.adapter as MovieAdapter).itemList = it
             }
@@ -55,5 +56,8 @@ class BestMoviesFragment : Fragment() {
         _binding = null
         super.onDestroyView()
     }
+
+
+
 
 }

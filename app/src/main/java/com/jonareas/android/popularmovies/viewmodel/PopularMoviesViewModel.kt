@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieListViewModel @Inject constructor(
+class PopularMoviesViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
     private val dispatchers : DispatcherProvider
 ) :
@@ -23,10 +23,10 @@ class MovieListViewModel @Inject constructor(
     val popularMovies: LiveData<List<Movie>> = _popularMovies
 
     init {
-        fetchMovies()
+        fetchPopularMovies()
     }
 
-    private fun fetchMovies() {
+    private fun fetchPopularMovies() {
 
         viewModelScope.launch(dispatchers.io) {
           try {

@@ -4,6 +4,7 @@
     <dimen name="grid_2">16dp</dimen>
     <dimen name="grid_1_5">12dp</dimen>
     <dimen name="grid_1">8dp</dimen>
+    <dimen name="text_tab_layout_size">14sp</dimen>
     <dimen name="margin_high">32dp</dimen>
     <dimen name="margin_small">4dp</dimen>
     <dimen name="text_size_body_title">16sp</dimen>

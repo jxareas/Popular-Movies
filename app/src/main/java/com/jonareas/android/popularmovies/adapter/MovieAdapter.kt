@@ -19,7 +19,7 @@ import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.utils.POSTER_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.isColorDark
-import com.jonareas.android.popularmovies.view.home.HomeViewPagerFragmentDirections
+import com.jonareas.android.popularmovies.view.viewpager.MoviesViewPagerFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
@@ -103,7 +103,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
             root.setOnClickListener { view ->
                 Navigation.findNavController(view).navigate(
-                    HomeViewPagerFragmentDirections.actionToMovieDetail(
+                    MoviesViewPagerFragmentDirections.actionToMovieDetail(
                         movie.title,
                         movie.id
                     )

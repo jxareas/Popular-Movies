@@ -14,35 +14,34 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TopMoviesListViewModel @Inject constructor(
+class UpcomingMoviesViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
     private val dispatchers : DispatcherProvider
-) :
-    ViewModel() {
+) : ViewModel() {
 
-    private var _topRatedMovies = MutableLiveData<List<Movie>>()
-    val topRatedMovies: LiveData<List<Movie>> = _topRatedMovies
+    private var _upcomingMovies = MutableLiveData<List<Movie>>()
+    val upcomingMovies: LiveData<List<Movie>> = _upcomingMovies
 
     init {
-        fetchTopRatedMovies()
+        fetchUpcomingMovies()
     }
 
-    private fun fetchTopRatedMovies() {
+    private fun fetchUpcomingMovies() {
 
         viewModelScope.launch(dispatchers.io) {
             try {
-                movieRepository.fetchPopularMovies()
+                movieRepository.fetchUpcomingMovies()
                     .map { listOfMovies ->
-                        listOfMovies.filter { movie -> movie.voteAverage >= 7.5 }
-                            .sortedByDescending { movie -> movie.voteAverage }
-                    }.collectLatest { listOfMovies ->
-                        _topRatedMovies.postValue(listOfMovies)
+                    listOfMovies.sortedBy { movie -> movie.voteAverage }
                     }
+                    .collectLatest {
+                        listOfMovies -> _upcomingMovies.postValue(listOfMovies) }
             } catch(throwable : Throwable) {
                 throwable.printStackTrace()
             }
         }
 
     }
+
 
 }

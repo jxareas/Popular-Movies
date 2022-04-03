@@ -9,13 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jonareas.android.popularmovies.adapter.MovieAdapter
 import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
-import com.jonareas.android.popularmovies.viewmodel.MovieListViewModel
+import com.jonareas.android.popularmovies.viewmodel.UpcomingMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieListFragment : Fragment() {
+class UpcomingMoviesFragment : Fragment() {
 
-    private val viewModel : MovieListViewModel by viewModels()
+    private val viewModel : UpcomingMoviesViewModel by viewModels()
 
     private var _binding : FragmentMovieListBinding? = null
     private val binding : FragmentMovieListBinding
@@ -25,20 +25,20 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       _binding = FragmentMovieListBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieListBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         initObservers()
-
     }
 
     private fun initObservers() : Unit = binding.run {
 
-        viewModel.popularMovies.observe(viewLifecycleOwner) { listOfMovies ->
+        viewModel.upcomingMovies.observe(viewLifecycleOwner) { listOfMovies ->
             listOfMovies?.let {
                 (recyclerViewMovies.adapter as MovieAdapter).itemList = it
             }
@@ -56,5 +56,7 @@ class MovieListFragment : Fragment() {
         _binding = null
         super.onDestroyView()
     }
+
+
 
 }

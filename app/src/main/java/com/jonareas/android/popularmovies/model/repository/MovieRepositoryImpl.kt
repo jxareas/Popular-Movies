@@ -12,6 +12,12 @@ class MovieRepositoryImpl @Inject constructor(private val movieService: MovieSer
     override suspend fun fetchPopularMovies(): Flow<List<Movie>> =
         flow { emit(movieService.fetchPopularMovies().movies) }
 
+    override suspend fun fetchUpcomingMovies(): Flow<List<Movie>> =
+        flow { emit(movieService.fetchUpcomingMovies().movies) }
+
+    override suspend fun fetchNowPlayingMovies(): Flow<List<Movie>> =
+        flow { emit(movieService.fetchNowPlayingMovies().movies) }
+
     override suspend fun fetchMovieById(id: Int): Flow<Movie> =
         flow { emit(movieService.fetchMovieById(id)) }
 

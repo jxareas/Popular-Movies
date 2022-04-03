@@ -16,11 +16,21 @@
     </style>
     <style name="Template.Widget.TabLayout" parent="Widget.Material3.TabLayout.Secondary">
         <item name="android:layout_width">match_parent</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabGravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="tabIndicatorAnimationMode">linear</item>
         <item name="android:background">?attr/colorOnPrimary</item>
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
         <item name="tabTextColor">?attr/colorPrimary</item>
         <item name="tabIndicatorFullWidth">true</item>
+        <item name="tabTextAppearance">@style/Template.TextAppearance.TabLayoutItem</item>
     </style>
+    <style name="Template.TextAppearance.TabLayoutItem" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text_tab_layout_size</item>
+        <item name="android:textAllCaps">true</item>
+<!--        <item name="android:fontFamily">@font/lato</item>-->
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
