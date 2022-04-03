@@ -27,8 +27,12 @@ class MovieDetailViewModel @Inject constructor(
     private fun fetchMovieById(id : Int) {
 
         viewModelScope.launch(dispatchers.io) {
-            movieRepository.fetchMovieById(id).collectLatest { selectedMovie ->
-                _movie.postValue(selectedMovie)
+            try {
+                movieRepository.fetchMovieById(id).collectLatest { selectedMovie ->
+                    _movie.postValue(selectedMovie)
+                }
+            } catch(throwable : Throwable) {
+                throwable.printStackTrace()
             }
         }
 

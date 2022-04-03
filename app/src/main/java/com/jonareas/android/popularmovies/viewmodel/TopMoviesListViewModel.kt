@@ -30,13 +30,17 @@ class TopMoviesListViewModel @Inject constructor(
     private fun fetchTopRatedMovies() {
 
         viewModelScope.launch(dispatchers.io) {
-            movieRepository.fetchPopularMovies()
-                .map { listOfMovies ->
-                    listOfMovies.filter { movie -> movie.voteAverage >= 7.5 }
-                        .sortedByDescending { movie -> movie.voteAverage }
-                }.collectLatest { listOfMovies ->
-                    _topRatedMovies.postValue(listOfMovies)
-                }
+            try {
+                movieRepository.fetchPopularMovies()
+                    .map { listOfMovies ->
+                        listOfMovies.filter { movie -> movie.voteAverage >= 7.5 }
+                            .sortedByDescending { movie -> movie.voteAverage }
+                    }.collectLatest { listOfMovies ->
+                        _topRatedMovies.postValue(listOfMovies)
+                    }
+            } catch(throwable : Throwable) {
+                throwable.printStackTrace()
+            }
         }
 
     }

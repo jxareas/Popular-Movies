@@ -8,7 +8,6 @@ import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.model.repository.MovieRepository
 import com.jonareas.android.popularmovies.utils.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,12 +27,16 @@ class MovieListViewModel @Inject constructor(
     }
 
     private fun fetchMovies() {
-        viewModelScope.launch(dispatchers.io) {
-            movieRepository.fetchPopularMovies().collectLatest { listOfMovies ->
-                _popularMovies.postValue(listOfMovies)
 
-            }
+        viewModelScope.launch(dispatchers.io) {
+          try {
+              movieRepository.fetchPopularMovies().collectLatest {
+                      listOfMovies -> _popularMovies.postValue(listOfMovies) }
+          } catch(throwable : Throwable) {
+              throwable.printStackTrace()
+          }
         }
+
     }
 
 }
