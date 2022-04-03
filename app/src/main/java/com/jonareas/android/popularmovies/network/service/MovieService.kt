@@ -12,4 +12,7 @@ interface MovieService {
 
     @GET("movie/{movie_id}")
     suspend fun fetchMovieById(@Path("movie_id") movieId : Int) : Movie
+
+    @GET("movie/top_rated")
+    suspend fun fetchTopRatedMovies() : GetMoviesResponse
 }

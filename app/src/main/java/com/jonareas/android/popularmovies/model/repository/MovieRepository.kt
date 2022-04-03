@@ -9,4 +9,6 @@ interface MovieRepository {
 
     suspend fun fetchMovieById(id : Int) : Flow<Movie>
 
+    suspend fun fetchTopRatedMovies() : Flow<List<Movie>>
+
 }
