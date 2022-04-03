@@ -9,9 +9,9 @@
 
     <string name="popular">Popular</string>
     <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Coming Soon</string>
     <string name="hot">Hot</string>
     <string name="top">Top Rated</string>
-    <string name="settings">Settings</string>
 
     <string name="light">Light</string>
     <string name="dark">Dark</string>
@@ -33,6 +33,7 @@
     <string name="reply_title">Default reply action</string>
     <string name="volume">Volume</string>
     <string name="ok">OK</string>
-    <string name="upcoming">Upcoming</string>
+    <string name="settings">Settings</string>
+    <string name="movies">Movies</string>
 
 </resources>
