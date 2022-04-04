@@ -16,6 +16,11 @@
                 android:id="@+id/tvShowsViewPagerFragment"
                 android:icon="@drawable/ic_television"
                 android:title="@string/tv_shows" />
+
+                <item
+                    android:id="@+id/popularActorsFragment"
+                    android:icon="@drawable/ic_person"
+                    android:title="@string/actors" />
             </group>
         </menu>
     </item>

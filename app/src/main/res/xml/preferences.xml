@@ -16,8 +16,9 @@
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            app:key="Key"
-            app:title="TMDb API key" />
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
@@ -37,11 +38,6 @@
         app:icon="@drawable/ic_message"
         app:title="@string/messages_header" />
 
-    <EditTextPreference
-        app:key="signature"
-        app:title="@string/signature_title"
-        app:useSimpleSummaryProvider="true" />
-
     <ListPreference
         app:defaultValue="reply"
         app:entries="@array/reply_entries"
@@ -55,5 +51,23 @@
         app:key="volume_notifications"
         app:showSeekBarValue="true"
         app:title="@string/volume" />
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_information"
+        app:title="@string/info">
+
+        <EditTextPreference
+            app:key="Version"
+            app:title="Version"
+            app:summary="v0.1.0-beta-v8a"
+            android:selectable="false"
+            />
+
+        <EditTextPreference
+            app:key="Key"
+            app:title="TMDb API key"
+            android:selectable="false"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

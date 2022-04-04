@@ -36,6 +36,11 @@
         android:label="@string/tv_shows"
         tools:layout="@layout/fragment_home_view_pager"
         />
+    <fragment
+        android:id="@+id/popularActorsFragment"
+        android:name="com.jonareas.android.popularmovies.view.actors.PopularActorsFragment"
+        android:label="@string/trending_actors"
+        tools:layout="@layout/fragment_movie_list" />
 
 
 </navigation>

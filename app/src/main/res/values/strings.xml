@@ -40,5 +40,8 @@
     <string name="on_the_air">On the Air</string>
     <string name="my_account">My Account</string>
     <string name="browse">Browse</string>
+    <string name="actors">Actors</string>
+    <string name="trending_actors">Trending Actors</string>
+    <string name="info">App Information</string>
 
 </resources>

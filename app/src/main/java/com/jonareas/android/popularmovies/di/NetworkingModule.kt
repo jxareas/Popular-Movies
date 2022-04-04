@@ -1,6 +1,7 @@
 package com.jonareas.android.popularmovies.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.jonareas.android.popularmovies.network.service.ActorService
 import com.jonareas.android.popularmovies.network.service.MovieService
 import com.jonareas.android.popularmovies.network.service.TvShowsService
 import com.jonareas.android.popularmovies.utils.TMDb_API_KEY
@@ -93,6 +94,11 @@ object NetworkingModule {
     @Singleton
     fun provideTvShowService(retrofit : Retrofit) : TvShowsService =
         retrofit.create(TvShowsService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideActorService(retrofit : Retrofit) : ActorService =
+        retrofit.create(ActorService::class.java)
 
 
 }

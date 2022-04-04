@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(setOf(R.id.moviesViewPagerFragment,
             R.id.tvShowsViewPagerFragment,
+            R.id.popularActorsFragment,
             R.id.preferencesFragment), binding.root)
 
         setupNavDrawer(binding.navigationView)

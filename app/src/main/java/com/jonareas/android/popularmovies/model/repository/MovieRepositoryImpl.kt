@@ -10,17 +10,27 @@ class MovieRepositoryImpl @Inject constructor(private val movieService: MovieSer
     MovieRepository {
 
     override suspend fun fetchPopularMovies(): Flow<List<Movie>> =
-        flow { emit(movieService.fetchPopularMovies().movies) }
+        flow {
+            emit(movieService.fetchPopularMovies().movies)
+        }
 
     override suspend fun fetchUpcomingMovies(): Flow<List<Movie>> =
-        flow { emit(movieService.fetchUpcomingMovies().movies) }
+        flow {
+            emit(movieService.fetchUpcomingMovies().movies)
+        }
 
     override suspend fun fetchNowPlayingMovies(): Flow<List<Movie>> =
-        flow { emit(movieService.fetchNowPlayingMovies().movies) }
+        flow {
+            emit(movieService.fetchNowPlayingMovies().movies)
+        }
 
     override suspend fun fetchMovieById(id: Int): Flow<Movie> =
-        flow { emit(movieService.fetchMovieById(id)) }
+        flow {
+            emit(movieService.fetchMovieById(id))
+        }
 
     override suspend fun fetchTopRatedMovies(): Flow<List<Movie>> =
-        flow { emit(movieService.fetchTopRatedMovies().movies) }
+        flow {
+            emit(movieService.fetchTopRatedMovies().movies)
+        }
 }
