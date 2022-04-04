@@ -15,8 +15,8 @@ import com.bumptech.glide.request.target.Target
 import com.jonareas.android.popularmovies.R
 import com.jonareas.android.popularmovies.adapter.MovieAdapter.MovieViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemMovieBinding
-import com.jonareas.android.popularmovies.model.entities.Movie
-import com.jonareas.android.popularmovies.utils.POSTER_PATH_PREFIX
+import com.jonareas.android.popularmovies.model.entities.Media
+import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.isColorDark
 import com.jonareas.android.popularmovies.view.viewpager.MoviesViewPagerFragmentDirections
@@ -27,13 +27,12 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     private companion object {
 
-        private val diffCallback = object : DiffUtil.ItemCallback<Movie>() {
-            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-                oldItem.title == newItem.title
+        private val diffCallback = object : DiffUtil.ItemCallback<Media>() {
+            override fun areItemsTheSame(oldItem: Media, newItem: Media): Boolean =
+                oldItem.posterPath == newItem.posterPath
 
-            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-                oldItem == newItem
-
+            override fun areContentsTheSame(oldItem: Media, newItem: Media): Boolean =
+                oldItem.posterPath == newItem.posterPath
         }
 
         private val asyncDiffConfig = AsyncDifferConfig.Builder(diffCallback)
@@ -42,7 +41,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
     }
 
     private val diffList = AsyncListDiffer(AdapterListUpdateCallback(this), asyncDiffConfig)
-    var itemList: List<Movie>
+    var itemList: List<Media>
         get() = diffList.currentList
         set(value) {
             diffList.submitList(value)
@@ -58,16 +57,19 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
     inner class MovieViewHolder(private val binding: ListItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie): Unit = binding.run {
-            textViewMovieTitle.text = movie.title
-            textViewMovieOverview.text = movie.overview
+
+        fun bind(media: Media): Unit = binding.run {
+            if(media.movieTitle.isNotEmpty())
+                textViewMovieTitle.text = media.movieTitle
+            else textViewMovieTitle.text = media.showTitle
+            textViewMovieOverview.text = media.overview
             textViewMovieRating.text =
-                itemView.context.getString(R.string.movie_rating, movie.voteAverage)
+                itemView.context.getString(R.string.movie_rating, media.voteAverage)
 
             Glide.with(root.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .asBitmap()
-                .load("${POSTER_PATH_PREFIX}${movie.posterPath}")
+                .load("${IMAGE_PATH_PREFIX}${media.posterPath}")
                 .listener(object : RequestListener<Bitmap> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -104,8 +106,8 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
             root.setOnClickListener { view ->
                 Navigation.findNavController(view).navigate(
                     MoviesViewPagerFragmentDirections.actionToMovieDetail(
-                        movie.title,
-                        movie.id
+                        media.movieTitle,
+                        media.id
                     )
                 )
             }

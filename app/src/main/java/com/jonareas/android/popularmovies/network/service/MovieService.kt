@@ -21,4 +21,5 @@ interface MovieService {
 
     @GET("movie/top_rated")
     suspend fun fetchTopRatedMovies() : GetMoviesResponse
+
 }

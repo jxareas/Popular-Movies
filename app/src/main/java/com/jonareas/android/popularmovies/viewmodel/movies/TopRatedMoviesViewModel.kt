@@ -1,4 +1,4 @@
-package com.jonareas.android.popularmovies.viewmodel
+package com.jonareas.android.popularmovies.viewmodel.movies
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,28 +13,28 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
+class TopRatedMoviesViewModel @Inject constructor(
     private val movieRepository: MovieRepository,
-    private val dispatchers : DispatcherProvider
-) :
-    ViewModel() {
+    private val dispatchers: DispatcherProvider,
+) : ViewModel() {
 
-    private var _popularMovies = MutableLiveData<List<Movie>>()
-    val popularMovies: LiveData<List<Movie>> = _popularMovies
+    private var _topRatedMovies = MutableLiveData<List<Movie>>()
+    val topRatedMovies: LiveData<List<Movie>> = _topRatedMovies
+
 
     init {
-        fetchPopularMovies()
+        fetchTopRatedMovies()
     }
 
-    private fun fetchPopularMovies() {
+    private fun fetchTopRatedMovies() {
 
         viewModelScope.launch(dispatchers.io) {
-          try {
-              movieRepository.fetchPopularMovies().collectLatest {
-                      listOfMovies -> _popularMovies.postValue(listOfMovies) }
-          } catch(throwable : Throwable) {
-              throwable.printStackTrace()
-          }
+            try {
+                movieRepository.fetchTopRatedMovies().collectLatest {
+                        listOfMovies -> _topRatedMovies.postValue(listOfMovies) }
+            } catch(throwable : Throwable) {
+                throwable.printStackTrace()
+            }
         }
 
     }

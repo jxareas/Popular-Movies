@@ -2,6 +2,8 @@ package com.jonareas.android.popularmovies.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.jonareas.android.popularmovies.network.service.MovieService
+import com.jonareas.android.popularmovies.network.service.TvShowsService
+import com.jonareas.android.popularmovies.utils.TMDb_API_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +24,6 @@ import javax.inject.Singleton
 object NetworkingModule {
 
     private const val BASE_URL = "https://api.themoviedb.org/3/"
-    private const val TMDb_API_KEY = "a13c5166b4b7d0c6edee4e9e9dc71aaa"
     private const val APPLICATION_JSON : String = "application/json"
 
     @Provides
@@ -58,11 +59,14 @@ object NetworkingModule {
             .addInterceptor(loggingInterceptor)
             .build()
 
+
     @Provides
     @Singleton
     fun provideJson() : Json =
         Json {
             ignoreUnknownKeys = true
+            coerceInputValues = true
+            isLenient = true
         }
 
     @ExperimentalSerializationApi
@@ -85,8 +89,10 @@ object NetworkingModule {
     fun provideMovieService(retrofit: Retrofit) : MovieService =
         retrofit.create(MovieService::class.java)
 
-
-
+    @Provides
+    @Singleton
+    fun provideTvShowService(retrofit : Retrofit) : TvShowsService =
+        retrofit.create(TvShowsService::class.java)
 
 
 }

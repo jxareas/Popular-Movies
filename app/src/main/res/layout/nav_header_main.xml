@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/nav_header_vertical_spacing"
+    android:background="?attr/colorPrimary"
+    android:paddingBottom="@dimen/nav_header_vertical_spacing">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_view_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_movies_app_round"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+        />
+
+    <TextView
+        android:id="@+id/text_view_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/image_view_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/margin_high"
+        android:textStyle="bold"
+        android:fontFamily="@font/raleway"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:text="Cinema by Jon Areas"
+        android:textColor="?attr/colorOnPrimary"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/image_view_logo"
+        app:layout_constraintTop_toBottomOf="@id/text_view_welcome"
+        android:paddingStart="@dimen/margin_standard"
+        android:text="Free Plan"
+        android:fontFamily="@font/raleway"
+        android:layout_marginTop="@dimen/margin_small"
+        android:textColor="?attr/colorOnSurface"
+        />
+
+<!--    <TextView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/raleway"-->
+<!--        android:paddingTop="@dimen/nav_header_vertical_spacing"-->
+<!--        android:text="Cinema"-->
+<!--        android:textColor="?attr/colorOnPrimary"-->
+<!--        android:textSize="30sp"-->
+<!--        android:maxLines="1"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@mipmap/ic_movies_app_foreground" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvName"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingTop="@dimen/nav_header_vertical_spacing"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--        android:textColor="?attr/colorOnPrimary"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/imageView"-->
+<!--        tools:text="Name" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvEmail"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="?attr/colorOnPrimary"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvName"-->
+<!--        tools:text="name@email.com" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

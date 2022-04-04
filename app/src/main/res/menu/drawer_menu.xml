@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/moviesViewPagerFragment"
-            android:title="@string/movies"
-            android:icon="@drawable/ic_movies"
-            />
+    <item android:title="@string/browse">
 
-        <item
-            android:id="@+id/preferencesFragment"
-            android:title="@string/settings"
-            android:icon="@drawable/ic_settings"
-            />
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/moviesViewPagerFragment"
+                android:icon="@drawable/ic_movies"
+                android:title="@string/movies" />
+
+            <item
+                android:id="@+id/tvShowsViewPagerFragment"
+                android:icon="@drawable/ic_television"
+                android:title="@string/tv_shows" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/my_account">
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/preferencesFragment"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/settings" />
+            </group>
+        </menu>
+    </item>
+
     </group>
 </menu>

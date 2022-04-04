@@ -30,6 +30,12 @@
         android:id="@+id/preferencesFragment"
         android:name="com.jonareas.android.popularmovies.view.settings.PreferencesFragment"
         android:label="@string/settings" />
+    <fragment
+        android:id="@+id/tvShowsViewPagerFragment"
+        android:name="com.jonareas.android.popularmovies.view.viewpager.TvShowsViewPagerFragment"
+        android:label="@string/tv_shows"
+        tools:layout="@layout/fragment_home_view_pager"
+        />
 
 
 </navigation>

@@ -11,9 +11,18 @@ import com.jonareas.android.popularmovies.view.movies.*
 class MoviesViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    private val fragments : Set<Fragment> = setOf(PopularMoviesFragment(), NowPlayingMoviesFragment(), UpcomingMoviesFragment(), HotMoviesFragment(), TopRatedMoviesFragment())
+    private val fragments: Set<Fragment> = setOf(PopularMoviesFragment(),
+        NowPlayingMoviesFragment(),
+        UpcomingMoviesFragment(),
+        HotMoviesFragment(),
+        TopRatedMoviesFragment())
 
-    val titles : Set<Int> = setOf(R.string.popular, R.string.now_playing, R.string.upcoming, R.string.hot, R.string.top, R.string.settings)
+    val titles: Set<Int> = setOf(R.string.popular,
+        R.string.now_playing,
+        R.string.coming_soon,
+        R.string.hot,
+        R.string.top_rated,
+        R.string.settings)
 
     override fun getItemCount(): Int = fragments.size
 

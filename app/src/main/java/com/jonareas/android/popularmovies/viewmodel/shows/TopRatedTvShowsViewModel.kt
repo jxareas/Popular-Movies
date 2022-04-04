@@ -1,11 +1,11 @@
-package com.jonareas.android.popularmovies.viewmodel
+package com.jonareas.android.popularmovies.viewmodel.shows
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jonareas.android.popularmovies.model.entities.Movie
-import com.jonareas.android.popularmovies.model.repository.MovieRepository
+import com.jonareas.android.popularmovies.model.entities.TvShow
+import com.jonareas.android.popularmovies.model.repository.TvShowsRepository
 import com.jonareas.android.popularmovies.utils.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -13,30 +13,30 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TopRatedMoviesViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
+class TopRatedTvShowsViewModel @Inject constructor(
+    private val tvShowsRepository: TvShowsRepository,
     private val dispatchers: DispatcherProvider,
 ) : ViewModel() {
 
-    private var _topRatedMovies = MutableLiveData<List<Movie>>()
-    val topRatedMovies: LiveData<List<Movie>> = _topRatedMovies
-
+    private var _popularTvShows = MutableLiveData<List<TvShow>>()
+    val topRatedTvShows: LiveData<List<TvShow>> = _popularTvShows
 
     init {
-        fetchTopRatedMovies()
+        fetchPopularTvShows()
     }
 
-    private fun fetchTopRatedMovies() {
+    private fun fetchPopularTvShows() {
 
         viewModelScope.launch(dispatchers.io) {
             try {
-                movieRepository.fetchTopRatedMovies().collectLatest {
-                        listOfMovies -> _topRatedMovies.postValue(listOfMovies) }
+                tvShowsRepository.fetchTopRatedTvShows().collectLatest {
+                        listOfShows -> _popularTvShows.postValue(listOfShows) }
             } catch(throwable : Throwable) {
                 throwable.printStackTrace()
             }
         }
 
     }
+
 
 }

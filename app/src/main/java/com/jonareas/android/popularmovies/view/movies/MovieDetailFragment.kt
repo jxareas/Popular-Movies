@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.jonareas.android.popularmovies.databinding.FragmentMovieDetailBinding
-import com.jonareas.android.popularmovies.utils.POSTER_PATH_PREFIX
-import com.jonareas.android.popularmovies.viewmodel.MovieDetailViewModel
+import com.jonareas.android.popularmovies.viewmodel.movies.MovieDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,17 +37,13 @@ class MovieDetailFragment : Fragment() {
     }
 
     private fun initObservers(): Unit = binding.run {
-        viewModel.movie.observe(viewLifecycleOwner) { movie ->
-            viewModel.movie.observe(viewLifecycleOwner) { movie ->
-                textViewTitle.text = movie.title
-                textViewOverview.text = movie.overview
-                Glide.with(root.context)
-                    .setDefaultRequestOptions(RequestOptions())
-                    .load("${POSTER_PATH_PREFIX}${movie.posterPath}")
-                    .into(imageViewMoviePoster)
 
+            lifecycleOwner = this@MovieDetailFragment.viewLifecycleOwner
+
+            viewModel.movie.observe(viewLifecycleOwner) { movie ->
+                binding.movie = movie
             }
-        }
+
     }
 
     override fun onDestroyView() {

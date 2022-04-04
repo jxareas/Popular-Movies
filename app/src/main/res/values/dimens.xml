@@ -11,4 +11,5 @@
     <dimen name="dimen_20sp">20sp</dimen>
     <dimen name="card_elevation">3dp</dimen>
     <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
 </resources>

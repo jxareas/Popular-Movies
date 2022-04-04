@@ -15,6 +15,10 @@
             app:title="@string/theme"
             app:useSimpleSummaryProvider="true" />
 
+        <EditTextPreference
+            app:key="Key"
+            app:title="TMDb API key" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -22,17 +26,16 @@
         app:title="@string/notifications">
 
         <SwitchPreferenceCompat
-            app:key="@string/KEY_DISABLE_NOTIFICATIONS"
-            app:title="@string/disable_notifications"
-            app:summaryOn="@string/no_more_notifications"
-            app:summaryOff="@string/all_notifications"
             android:defaultValue="false"
-            />
+            app:key="@string/KEY_DISABLE_NOTIFICATIONS"
+            app:summaryOff="@string/all_notifications"
+            app:summaryOn="@string/no_more_notifications"
+            app:title="@string/disable_notifications" />
     </PreferenceCategory>
 
     <PreferenceCategory
         app:icon="@drawable/ic_message"
-        app:title="@string/messages_header"/>
+        app:title="@string/messages_header" />
 
     <EditTextPreference
         app:key="signature"
@@ -48,9 +51,9 @@
         app:useSimpleSummaryProvider="true" />
 
     <SeekBarPreference
+        app:defaultValue="60"
         app:key="volume_notifications"
-        app:title="@string/volume"
         app:showSeekBarValue="true"
-        app:defaultValue= "60" />
+        app:title="@string/volume" />
 
 </PreferenceScreen>
