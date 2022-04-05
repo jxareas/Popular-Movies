@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.jonareas.android.popularmovies.R
-import com.jonareas.android.popularmovies.adapter.ActorAdapter.ActorViewHolder
+import com.jonareas.android.popularmovies.adapter.ActorListAdapter.ActorViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemActorBinding
 import com.jonareas.android.popularmovies.model.entities.Actor
 import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
 
-class ActorAdapter(private val onActorClicked : (Actor) -> Unit) :
+class ActorListAdapter(private val onActorClicked : (Actor) -> Unit) :
     ListAdapter<Actor, ActorViewHolder>(asyncConfig) {
 
     private companion object {

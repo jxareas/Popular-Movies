@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.jonareas.android.popularmovies.adapter.MovieAdapter
+import com.jonareas.android.popularmovies.adapter.MediaListAdapter
 import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
 import com.jonareas.android.popularmovies.viewmodel.movies.TopRatedMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +39,7 @@ class TopRatedMoviesFragment : Fragment() {
 
         viewModel.topRatedMovies.observe(viewLifecycleOwner) { listOfMovies ->
             listOfMovies?.let {
-                (recyclerViewMovies.adapter as MovieAdapter).itemList = it
+                (recyclerViewMovies.adapter as MediaListAdapter).submitList(it)
             }
         }
 
@@ -47,7 +47,7 @@ class TopRatedMoviesFragment : Fragment() {
 
     private fun setupRecyclerView() : Unit = binding.recyclerViewMovies.run {
         layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = MovieAdapter()
+        adapter = MediaListAdapter()
 
     }
 

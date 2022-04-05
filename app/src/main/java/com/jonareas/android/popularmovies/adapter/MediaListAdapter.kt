@@ -5,25 +5,28 @@ import android.graphics.Color
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.jonareas.android.popularmovies.R
-import com.jonareas.android.popularmovies.adapter.MovieAdapter.MovieViewHolder
+import com.jonareas.android.popularmovies.adapter.MediaListAdapter.MediaViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemMovieBinding
 import com.jonareas.android.popularmovies.model.entities.Media
 import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.isColorDark
+import com.jonareas.android.popularmovies.utils.requestOptions
 import com.jonareas.android.popularmovies.view.viewpager.MoviesViewPagerFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 
-class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
+class MediaListAdapter : ListAdapter<Media, MediaViewHolder>(asyncDiffConfig) {
 
     private companion object {
 
@@ -32,7 +35,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
                 oldItem.posterPath == newItem.posterPath
 
             override fun areContentsTheSame(oldItem: Media, newItem: Media): Boolean =
-                oldItem.posterPath == newItem.posterPath
+                areItemsTheSame(oldItem, newItem)
         }
 
         private val asyncDiffConfig = AsyncDifferConfig.Builder(diffCallback)
@@ -40,21 +43,8 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
             .build()
     }
 
-    private val diffList = AsyncListDiffer(AdapterListUpdateCallback(this), asyncDiffConfig)
-    var itemList: List<Media>
-        get() = diffList.currentList
-        set(value) {
-            diffList.submitList(value)
-        }
 
-    private val requestOptions by lazy {
-        RequestOptions()
-            .error(R.drawable.no_internet)
-            .placeholder(R.drawable.ic_movie_placeholder)
-    }
-
-
-    inner class MovieViewHolder(private val binding: ListItemMovieBinding) :
+    inner class MediaViewHolder(private val binding: ListItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
 
@@ -115,12 +105,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
-        MovieViewHolder(parent help ListItemMovieBinding::inflate)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder =
+        MediaViewHolder(parent help ListItemMovieBinding::inflate)
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int): Unit =
-        holder.bind(itemList[position])
+    override fun onBindViewHolder(holder: MediaViewHolder, position: Int): Unit =
+        holder.bind(currentList[position])
 
-    override fun getItemCount(): Int = itemList.size
 
 }
