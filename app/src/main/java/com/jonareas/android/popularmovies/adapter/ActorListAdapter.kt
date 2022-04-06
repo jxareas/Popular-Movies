@@ -5,14 +5,12 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.jonareas.android.popularmovies.R
 import com.jonareas.android.popularmovies.adapter.ActorListAdapter.ActorViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemActorBinding
 import com.jonareas.android.popularmovies.model.entities.Actor
 import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
+import com.jonareas.android.popularmovies.utils.load
 
 class ActorListAdapter(private val onActorClicked : (Actor) -> Unit) :
     ListAdapter<Actor, ActorViewHolder>(asyncConfig) {
@@ -30,24 +28,13 @@ class ActorListAdapter(private val onActorClicked : (Actor) -> Unit) :
         private val asyncConfig = AsyncDifferConfig.Builder(diffCallback).build()
     }
 
-    private val requestOptions by lazy {
-        RequestOptions()
-            .error(R.drawable.no_internet)
-            .placeholder(R.drawable.ic_movie_placeholder)
-    }
-
 
     inner class ActorViewHolder(private val binding: ListItemActorBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(actor: Actor): Unit = binding.run {
             textViewActorName.text = actor.name
-
-            Glide.with(itemView.context)
-                .applyDefaultRequestOptions(requestOptions)
-                .load("${IMAGE_PATH_PREFIX}${actor.profile_path}")
-                .into(imageViewMoviePoster)
-
+            imageViewMoviePoster.load("${IMAGE_PATH_PREFIX}${actor.profile_path}")
         }
     }
 

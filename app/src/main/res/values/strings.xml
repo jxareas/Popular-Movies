@@ -43,5 +43,6 @@
     <string name="actors">Actors</string>
     <string name="trending_actors">Trending Actors</string>
     <string name="info">App Information</string>
+    <string name="about">About</string>
 
 </resources>
