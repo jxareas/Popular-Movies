@@ -1,4 +1,4 @@
-package com.jonareas.android.popularmovies.view.movies
+package com.jonareas.android.popularmovies.view.shows
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,22 +12,23 @@ import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MoviePageFragment : Fragment() {
+class TvShowPageFragment : Fragment() {
 
-    private val moviePageType: MoviePageType by lazy {
-        MoviePageType.values().first {
-            it.ordinal == arguments?.getInt(MOVIE_PAGE_TYPE)
+
+    private val tvShowPageType: TvShowPageType by lazy {
+        TvShowPageType.values().first {
+            it.ordinal == arguments?.getInt(TV_SHOW_PAGE_TYPE)
         }
     }
 
     companion object {
-        const val MOVIE_PAGE_TYPE: String = "movie_page_type"
+        const val TV_SHOW_PAGE_TYPE: String = "tv_show_page_type"
 
-        fun newInstance(type: MoviePageType): MoviePageFragment {
-            val myFragment = MoviePageFragment()
+        fun newInstance(type: TvShowPageType): TvShowPageFragment {
+            val myFragment = TvShowPageFragment()
 
             val args = Bundle()
-            args.putInt(MOVIE_PAGE_TYPE, type.ordinal)
+            args.putInt(TV_SHOW_PAGE_TYPE, type.ordinal)
             myFragment.arguments = args
 
             return myFragment
@@ -35,7 +36,7 @@ class MoviePageFragment : Fragment() {
     }
 
     private val viewModel by lazy {
-        ViewModelProvider(this)[moviePageType.viewModelClass.java]
+        ViewModelProvider(this)[tvShowPageType.viewModelClass.java]
     }
     private var _binding: FragmentMovieListBinding? = null
     private val binding: FragmentMovieListBinding
@@ -56,8 +57,8 @@ class MoviePageFragment : Fragment() {
     }
 
     private fun initObservers(): Unit = binding.run {
-        viewModel.movies.observe(viewLifecycleOwner) { listOfMovies ->
-            listOfMovies.let {
+        viewModel.tvShows.observe(viewLifecycleOwner) { listOfShows ->
+            listOfShows.let {
                 (recyclerViewMovies.adapter as MediaListAdapter).submitList(it)
             }
         }
@@ -68,5 +69,6 @@ class MoviePageFragment : Fragment() {
         layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         adapter = MediaListAdapter()
     }
+
 
 }

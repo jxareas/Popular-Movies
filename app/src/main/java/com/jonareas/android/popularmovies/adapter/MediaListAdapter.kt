@@ -2,6 +2,7 @@ package com.jonareas.android.popularmovies.adapter
 
 import android.graphics.Color
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
@@ -12,11 +13,13 @@ import com.jonareas.android.popularmovies.adapter.MediaListAdapter.MediaViewHold
 import com.jonareas.android.popularmovies.databinding.ListItemMovieBinding
 import com.jonareas.android.popularmovies.model.entities.Media
 import com.jonareas.android.popularmovies.model.entities.Movie
+import com.jonareas.android.popularmovies.model.entities.TvShow
 import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.isColorDark
 import com.jonareas.android.popularmovies.utils.loadAsBitmap
 import com.jonareas.android.popularmovies.view.viewpager.MoviesViewPagerFragmentDirections
+import com.jonareas.android.popularmovies.view.viewpager.TvShowsViewPagerFragmentDirections
 
 class MediaListAdapter : ListAdapter<Media, MediaViewHolder>(asyncDiffConfig) {
 
@@ -36,6 +39,7 @@ class MediaListAdapter : ListAdapter<Media, MediaViewHolder>(asyncDiffConfig) {
 
     inner class MediaViewHolder(private val binding: ListItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
 
         private fun applyColorToBinding(dominantColor: Int): Unit = binding.run {
             innerConstraintLayout.setBackgroundColor(dominantColor)
@@ -60,19 +64,24 @@ class MediaListAdapter : ListAdapter<Media, MediaViewHolder>(asyncDiffConfig) {
 
 
             root.setOnClickListener { view ->
-                Navigation.findNavController(view).navigate(
-                    MoviesViewPagerFragmentDirections.actionToMovieDetail(media.movieTitle,
-                        media.id))
+                Navigation.findNavController(view).navigate(getDirection(media))
             }
+
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder =
-        MediaViewHolder(parent help ListItemMovieBinding::inflate)
+    private fun getDirection(media : Media) : NavDirections =
+        when(media) {
+            is Movie -> MoviesViewPagerFragmentDirections.actionToMovieDetail(media.movieTitle, media.id)
+            is TvShow -> TvShowsViewPagerFragmentDirections.actionToTvShowDetail(media.showTitle, media.id)
+        }
 
     override fun onBindViewHolder(holder: MediaViewHolder, position: Int): Unit =
         holder.bind(currentList[position])
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder =
+        MediaViewHolder(parent help ListItemMovieBinding::inflate)
 
 
 }

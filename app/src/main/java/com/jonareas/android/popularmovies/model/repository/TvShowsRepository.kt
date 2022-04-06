@@ -5,12 +5,12 @@ import kotlinx.coroutines.flow.Flow
 
 interface TvShowsRepository {
 
-    suspend fun fetchPopularShows() : Flow<List<TvShow>>
+    suspend fun fetchPopularTvShowsFlow() : Flow<List<TvShow>>
 
-    suspend fun fetchTopRatedTvShows() : Flow<List<TvShow>>
+    suspend fun fetchTopRatedTvShowsFlow() : Flow<List<TvShow>>
 
-    suspend fun fetchOnTheAirTvShows() : Flow<List<TvShow>>
+    suspend fun fetchOnTheAirTvShowsFlow() : Flow<List<TvShow>>
 
-    suspend fun fetchAiringTodayTvShows() : Flow<List<TvShow>>
+    suspend fun fetchAiringTodayTvShowsFlow() : Flow<List<TvShow>>
 
 }

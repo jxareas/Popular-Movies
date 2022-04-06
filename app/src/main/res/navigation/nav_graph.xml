@@ -9,7 +9,7 @@
         android:id="@+id/moviesViewPagerFragment"
         android:name="com.jonareas.android.popularmovies.view.viewpager.MoviesViewPagerFragment"
         android:label="@string/movies"
-        tools:layout="@layout/fragment_home_view_pager" >
+        tools:layout="@layout/fragment_home_view_pager">
         <action
             android:id="@+id/action_to_movie_detail"
             app:destination="@id/movieDetailFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.jonareas.android.popularmovies.view.movies.MovieDetailFragment"
         android:label="{title}"
-        tools:layout="@layout/fragment_movie_detail" >
+        tools:layout="@layout/fragment_movie_detail">
         <argument
             android:name="title"
             app:argType="string" />
@@ -34,13 +34,28 @@
         android:id="@+id/tvShowsViewPagerFragment"
         android:name="com.jonareas.android.popularmovies.view.viewpager.TvShowsViewPagerFragment"
         android:label="@string/tv_shows"
-        tools:layout="@layout/fragment_home_view_pager"
-        />
+        tools:layout="@layout/fragment_home_view_pager">
+        <action
+            android:id="@+id/action_to_tv_show_detail"
+            app:destination="@id/tvShowDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/popularActorsFragment"
         android:name="com.jonareas.android.popularmovies.view.actors.PopularActorsFragment"
         android:label="@string/trending_actors"
         tools:layout="@layout/fragment_movie_list" />
+    <fragment
+        android:id="@+id/tvShowDetailFragment"
+        android:name="com.jonareas.android.popularmovies.view.shows.TvShowDetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_tv_show_detail">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="showId"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>

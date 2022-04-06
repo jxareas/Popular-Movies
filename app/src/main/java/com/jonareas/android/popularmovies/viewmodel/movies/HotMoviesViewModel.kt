@@ -20,7 +20,7 @@ class HotMoviesViewModel @Inject constructor(
         get() = MoviePageType.Hot
 
     override suspend fun getMovieListDataFlow(): Flow<List<Movie>> =
-        movieRepository.fetchComingSoonMoviesFlow().map { listOfMovies ->
+        movieRepository.fetchPopularMoviesFlow().map { listOfMovies ->
         listOfMovies.filter { movie ->
             movie.voteAverage >= 7.5 }
         }

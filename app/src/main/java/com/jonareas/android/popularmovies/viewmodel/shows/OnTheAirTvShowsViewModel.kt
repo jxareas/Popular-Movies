@@ -1,42 +1,23 @@
 package com.jonareas.android.popularmovies.viewmodel.shows
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.jonareas.android.popularmovies.model.entities.TvShow
 import com.jonareas.android.popularmovies.model.repository.TvShowsRepository
 import com.jonareas.android.popularmovies.utils.DispatcherProvider
+import com.jonareas.android.popularmovies.view.shows.TvShowPageType
+import com.jonareas.android.popularmovies.viewmodel.base.TvShowBaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
 class OnTheAirTvShowsViewModel @Inject constructor(
     private val tvShowsRepository: TvShowsRepository,
     private val dispatchers: DispatcherProvider,
-) : ViewModel() {
+) : TvShowBaseViewModel(dispatchers) {
 
-    private var _onTheAirShows = MutableLiveData<List<TvShow>>()
-    val onTheAirTvShows: LiveData<List<TvShow>> = _onTheAirShows
+    override val pageType: TvShowPageType
+        get() = TvShowPageType.OnTheAir
 
-    init {
-        fetchPopularTvShows()
-    }
-
-    private fun fetchPopularTvShows() {
-
-        viewModelScope.launch(dispatchers.io) {
-            try {
-                tvShowsRepository.fetchOnTheAirTvShows().collectLatest {
-                        listOfShows -> _onTheAirShows.postValue(listOfShows) }
-            } catch(throwable : Throwable) {
-                throwable.printStackTrace()
-            }
-        }
-
-    }
-
-
+    override suspend fun getTvShowsDataFlow(): Flow<List<TvShow>> =
+        tvShowsRepository.fetchOnTheAirTvShowsFlow()
 }

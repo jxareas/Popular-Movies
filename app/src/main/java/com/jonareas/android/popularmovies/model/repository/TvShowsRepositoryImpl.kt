@@ -9,22 +9,22 @@ import javax.inject.Inject
 class TvShowsRepositoryImpl @Inject constructor(private val tvShowsService: TvShowsService) :
     TvShowsRepository {
 
-    override suspend fun fetchPopularShows(): Flow<List<TvShow>> =
+    override suspend fun fetchPopularTvShowsFlow(): Flow<List<TvShow>> =
         flow {
             emit(tvShowsService.fetchPopularTvShows().tvShows)
         }
 
-    override suspend fun fetchTopRatedTvShows(): Flow<List<TvShow>> =
+    override suspend fun fetchTopRatedTvShowsFlow(): Flow<List<TvShow>> =
         flow {
             emit(tvShowsService.fetchTopRatedTvShows().tvShows)
         }
 
-    override suspend fun fetchOnTheAirTvShows(): Flow<List<TvShow>> =
+    override suspend fun fetchOnTheAirTvShowsFlow(): Flow<List<TvShow>> =
         flow {
             emit(tvShowsService.fetchOnTheAirTvShows().tvShows)
         }
 
-    override suspend fun fetchAiringTodayTvShows(): Flow<List<TvShow>> =
+    override suspend fun fetchAiringTodayTvShowsFlow(): Flow<List<TvShow>> =
         flow {
             emit(tvShowsService.fetchAiringTodayTvShows().tvShows)
         }
