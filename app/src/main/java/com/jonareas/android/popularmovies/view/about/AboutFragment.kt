@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.jonareas.android.popularmovies.R
+import com.jonareas.android.popularmovies.databinding.FragmentAboutBinding
 
 
 class AboutFragment : DialogFragment() {
 
+    private var _binding : FragmentAboutBinding? = null
+    val binding : FragmentAboutBinding
+        get() = _binding!!
 
     override fun onStart() {
         super.onStart()
@@ -18,13 +22,19 @@ class AboutFragment : DialogFragment() {
             WindowManager.LayoutParams.WRAP_CONTENT)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_about, container)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-
-
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 
 
 }

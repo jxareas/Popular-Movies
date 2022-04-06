@@ -27,5 +27,4 @@ class MoviesApp : Application() {
         )
     }
 
-
 }

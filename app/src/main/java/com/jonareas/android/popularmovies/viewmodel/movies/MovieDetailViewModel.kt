@@ -28,7 +28,7 @@ class MovieDetailViewModel @Inject constructor(
 
         viewModelScope.launch(dispatchers.io) {
             try {
-                movieRepository.fetchMovieById(id).collectLatest { selectedMovie ->
+                movieRepository.fetchMovieByIdFlow(id).collectLatest { selectedMovie ->
                     _movie.postValue(selectedMovie)
                 }
             } catch(throwable : Throwable) {

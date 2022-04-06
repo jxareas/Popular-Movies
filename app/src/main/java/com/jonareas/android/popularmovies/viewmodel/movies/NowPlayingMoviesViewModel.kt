@@ -1,43 +1,26 @@
 package com.jonareas.android.popularmovies.viewmodel.movies
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.model.repository.MovieRepository
 import com.jonareas.android.popularmovies.utils.DispatcherProvider
+import com.jonareas.android.popularmovies.view.movies.MoviePageType
+import com.jonareas.android.popularmovies.viewmodel.base.MovieBaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
 class NowPlayingMoviesViewModel @Inject
 constructor(
     private val movieRepository: MovieRepository,
-    private val dispatchers: DispatcherProvider,
-) : ViewModel() {
+   dispatchers: DispatcherProvider
+) : MovieBaseViewModel(dispatchers) {
 
-    private var _nowPlayingMovies = MutableLiveData<List<Movie>>()
-    val nowPlayingMovies: LiveData<List<Movie>> = _nowPlayingMovies
+    override val pageType: MoviePageType
+        get() = MoviePageType.NowPlaying
 
-    init {
-        fetchNowPlayingMovies()
-    }
+    override suspend fun getMovieListDataFlow(): Flow<List<Movie>> =
+        movieRepository.fetchNowPlayingMoviesFlow()
 
-    private fun fetchNowPlayingMovies() {
-
-        viewModelScope.launch(dispatchers.io) {
-            try {
-                movieRepository.fetchNowPlayingMovies()
-                    .collectLatest {
-                        listOfMovies -> _nowPlayingMovies.postValue(listOfMovies) }
-            } catch(throwable : Throwable) {
-                throwable.printStackTrace()
-            }
-        }
-
-    }
 
 }
