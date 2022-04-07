@@ -9,11 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jonareas.android.popularmovies.adapter.MediaListAdapter
 import com.jonareas.android.popularmovies.databinding.FragmentMovieListBinding
+import com.jonareas.android.popularmovies.network.ConnectivityLiveData
+import com.jonareas.android.popularmovies.view.movies.ApiLoadingState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TvShowPageFragment : Fragment() {
 
+    private lateinit var connectivityLiveData: ConnectivityLiveData
 
     private val tvShowPageType: TvShowPageType by lazy {
         TvShowPageType.values().first {
@@ -56,6 +59,11 @@ class TvShowPageFragment : Fragment() {
         initObservers()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        connectivityLiveData = ConnectivityLiveData(requireActivity().application)
+        super.onCreate(savedInstanceState)
+    }
+
     private fun initObservers(): Unit = binding.run {
         viewModel.tvShows.observe(viewLifecycleOwner) { listOfShows ->
             listOfShows.let {
@@ -63,6 +71,36 @@ class TvShowPageFragment : Fragment() {
             }
         }
 
+        connectivityLiveData.observe(viewLifecycleOwner) { isAvailable ->
+
+            when (isAvailable) {
+                true -> {
+                    viewModel.onFragmentReady()
+                }
+                false -> {
+
+                }
+            }
+        }
+
+        viewModel.tvShowLoadingState.observe(viewLifecycleOwner) { currentState ->
+            onTvShowLoadingStateChanged(currentState)
+        }
+
+    }
+
+    private fun onTvShowLoadingStateChanged(state: ApiLoadingState) : Unit = binding.run {
+        when (state) {
+            ApiLoadingState.LOADING -> {
+                loadingProgressBar.visibility = View.VISIBLE
+            }
+            ApiLoadingState.DONE -> {
+                loadingProgressBar.visibility = View.GONE
+            }
+            ApiLoadingState.ERROR -> {
+                loadingProgressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun setupRecyclerView(): Unit = binding.recyclerViewMovies.run {

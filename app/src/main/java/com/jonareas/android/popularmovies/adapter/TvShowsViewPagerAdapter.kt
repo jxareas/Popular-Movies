@@ -13,9 +13,9 @@ class TvShowsViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifec
 
 
     private val pages: Set<TvShowPageType> = setOf(TvShowPageType.Popular,
-        TvShowPageType.AiringToday, TvShowPageType.OnTheAir, TvShowPageType.Hot, TvShowPageType.TopRated)
+        TvShowPageType.AiringToday, TvShowPageType.OnTheAir, TvShowPageType.TopRated)
 
-    val titles: Set<Int> = setOf(R.string.popular, R.string.airing_today, R.string.on_the_air, R.string.hot, R.string.top_rated)
+    val titles: Set<Int> = setOf(R.string.popular, R.string.airing_today, R.string.on_the_air, R.string.top_rated)
 
     override fun getItemCount(): Int = pages.size
 

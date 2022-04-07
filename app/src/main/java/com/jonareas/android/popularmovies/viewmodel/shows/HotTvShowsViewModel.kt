@@ -10,19 +10,19 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-@HiltViewModel
-class HotTvShowsViewModel @Inject constructor(
-    private val tvShowsRepository: TvShowsRepository,
-    private val dispatchers: DispatcherProvider,
-) : TvShowBaseViewModel(dispatchers) {
-
-    override val pageType: TvShowPageType
-        get() = TvShowPageType.Hot
-
-    override suspend fun getTvShowsDataFlow(): Flow<List<TvShow>> =
-        tvShowsRepository.fetchPopularTvShowsFlow().map { listOfShows ->
-            listOfShows.filter { tvShow ->
-                tvShow.voteAverage >= 7.5 }.sortedByDescending(TvShow::voteAverage)
-        }
-
-}
+//@HiltViewModel
+//class HotTvShowsViewModel @Inject constructor(
+//    private val tvShowsRepository: TvShowsRepository,
+//    private val dispatchers: DispatcherProvider,
+//) : TvShowBaseViewModel(dispatchers) {
+//
+//    override val pageType: TvShowPageType
+//        get() = TvShowPageType.Hot
+//
+//    override suspend fun getTvShowsDataFlow(): Flow<List<TvShow>> =
+//        tvShowsRepository.fetchPopularTvShowsFlow().map { listOfShows ->
+//            listOfShows.filter { tvShow ->
+//                tvShow.voteAverage >= 7.5 }.sortedByDescending(TvShow::voteAverage)
+//        }
+//
+//}

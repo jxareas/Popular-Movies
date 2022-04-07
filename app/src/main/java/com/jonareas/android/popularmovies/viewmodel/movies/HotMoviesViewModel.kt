@@ -10,20 +10,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-@HiltViewModel
-class HotMoviesViewModel @Inject constructor(
-    private val movieRepository: MovieRepository,
-    dispatchers : DispatcherProvider
-) : MovieBaseViewModel(dispatchers) {
-
-    override val pageType: MoviePageType
-        get() = MoviePageType.Hot
-
-    override suspend fun getMovieListDataFlow(): Flow<List<Movie>> =
-        movieRepository.fetchPopularMoviesFlow().map { listOfMovies ->
-        listOfMovies.filter { movie ->
-            movie.voteAverage >= 7.5 }
-        }
-
-
-}
+//@HiltViewModel
+//class HotMoviesViewModel @Inject constructor(
+//    private val movieRepository: MovieRepository,
+//    dispatchers : DispatcherProvider
+//) : MovieBaseViewModel(dispatchers) {
+//
+//    override val pageType: MoviePageType
+//        get() = MoviePageType.Hot
+//
+//    override suspend fun getMovieListDataFlow(): Flow<List<Movie>> =
+//        movieRepository.fetchPopularMoviesFlow().map { listOfMovies ->
+//        listOfMovies.filter { movie ->
+//            movie.voteAverage >= 7.5 }
+//        }
+//
+//
+//}
