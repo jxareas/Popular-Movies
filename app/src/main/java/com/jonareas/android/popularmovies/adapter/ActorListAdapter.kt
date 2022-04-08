@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jonareas.android.popularmovies.adapter.ActorListAdapter.ActorViewHolder
 import com.jonareas.android.popularmovies.databinding.ListItemActorBinding
 import com.jonareas.android.popularmovies.model.entities.Actor
-import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
+import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX_DEFAULT
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.load
 
@@ -34,7 +34,7 @@ class ActorListAdapter(private val onActorClicked : (Actor) -> Unit) :
 
         fun bind(actor: Actor): Unit = binding.run {
             textViewActorName.text = actor.name
-            imageViewMoviePoster.load("${IMAGE_PATH_PREFIX}${actor.profile_path}")
+            imageViewMoviePoster.load("${IMAGE_PATH_PREFIX_DEFAULT}${actor.profile_path}")
         }
     }
 

@@ -14,7 +14,7 @@ import com.jonareas.android.popularmovies.databinding.ListItemMovieBinding
 import com.jonareas.android.popularmovies.model.entities.Media
 import com.jonareas.android.popularmovies.model.entities.Movie
 import com.jonareas.android.popularmovies.model.entities.TvShow
-import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX
+import com.jonareas.android.popularmovies.utils.IMAGE_PATH_PREFIX_DEFAULT
 import com.jonareas.android.popularmovies.utils.help
 import com.jonareas.android.popularmovies.utils.isColorDark
 import com.jonareas.android.popularmovies.utils.loadAsBitmap
@@ -58,7 +58,7 @@ class MediaListAdapter : ListAdapter<Media, MediaViewHolder>(asyncDiffConfig) {
             textViewMovieRating.text =
                 itemView.context.getString(R.string.movie_rating, media.voteAverage)
 
-            imageViewMoviePoster.loadAsBitmap("${IMAGE_PATH_PREFIX}${media.posterPath}") { color ->
+            imageViewMoviePoster.loadAsBitmap("${IMAGE_PATH_PREFIX_DEFAULT}${media.posterPath}") { color ->
                 applyColorToBinding(color)
             }
 

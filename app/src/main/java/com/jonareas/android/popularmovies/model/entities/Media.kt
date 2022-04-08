@@ -29,6 +29,8 @@ data class Movie(
     val originalLanguage: String?,
     @SerialName(value = "original_title")
     val originalTitle: String?,
+    @SerialName(value = "tagline")
+    val tagLine : String = "",
     val popularity: Double?,
     @SerialName(value = "release_date")
     val releaseDate: String?,

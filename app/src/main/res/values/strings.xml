@@ -6,6 +6,7 @@
     <string name="movie_rating">  &#160;&#160;%.1f&#160;&#160;  </string>
     <string name="user_preferences">User Preferences</string>
     <string name="theme">Theme</string>
+    <string name="vote_format">%.1f</string>
 
     <string name="popular">Popular</string>
     <string name="now_playing">Now Playing</string>
